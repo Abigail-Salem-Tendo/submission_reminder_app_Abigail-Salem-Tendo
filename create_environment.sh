@@ -12,3 +12,8 @@ mkdir -p $folder/app
 mkdir -p $folder/modules
 mkdir -p $folder/assets
 mkdir -p $folder/config
+
+cp /home/abbysalem/reminder.sh $folder/app
+cp /home/abbysalem/functions.sh $folder/modules
+cp /home/abbysalem/submissions.txt $folder/assets
+cp /home/abbysalem/config.env $folder/config
