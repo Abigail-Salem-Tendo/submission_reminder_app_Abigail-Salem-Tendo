@@ -1,0 +1,6 @@
+#Using the format: student, assignment, submission status
+Salem, Mission Journal, submitted
+Angela, Shell Basics, not submitted
+Aaron, Learning Journal, not submitted
+Mark, Shell Navigation, submitted
+Favour, Mathematics, submitted

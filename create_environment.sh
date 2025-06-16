@@ -53,15 +53,37 @@ cat <<EOF > "$main_dir/modules/functions.sh"
         if [[ "$assignment" == "$ASSIGNMENT" && "$status" == "not submitted" ]]; then
               echo "Reminder: $student has not submitted the $ASSIGNMENT assignment!"
         fi
-   done < <(tail -n +2 "$submissions_file") # Skip the header                                         
+   done < <(tail -n +2 "$submissions_file") # Skip the header                                      
 }
+EOF
+
+#Creating the config.env file in the config directory
+cat <<EOF > "$main_dir/config/config.env"
+# This is the config file
+ASSIGNMENT="Shell Navigation"
+DAYS_REMAINING=2
+EOF
 
 
-         
-               
-                                        
-                                           
+#Creating the submission.txt files 
+cat <<EOF > "$main_dir/assets/submission.txt"
+#Using the format: student, assignment, submission status
+Salem, Mission Journal, submitted
+Angela, Shell Basics, not submitted
+Aaron, Learning Journal, not submitted
+Mark, Shell Navigation, submitted
+Favour, Mathematics, submitted
+EOF
 
-                                                        
-                                                        
+#Creating the startup.sh file
+cat <<EOF > "$main_dir/startup.sh"
+#!/bin/bash
+#using source
+source ./app/reminder.sh
+source ./config/config.env
+source ./modules/functions.sh
+EOF
 
+
+#Making all the .sh files executable
+find "$main_dir" -type f -name "*.sh" -exec chmod +x {} \;
