@@ -13,8 +13,12 @@ fi
 echo "Enter the name of your new assignment: "
 read new_assignment
 
-#Update the config.env file with the new assignment
-sed -i "s/^ASSIGNMENT=.*/ASSIGNMENT=${new_assignment}/" ./$main_dir/config/config.env
+#Creating the config file
+config_file="$app_dir/config/config.env"
 
+#Update the config.env file with the new assignment
+sed -i "s/^ASSIGNMENT=.*/ASSIGNMENT=${new_assignment}/" "$config_file"
+#Creating the startup script
+startup_script="$app_dir/startup.sh"
 #Running the script startup.sh again
-source ./startup.sh
+bash "$startup_script"
