@@ -1,16 +1,15 @@
 #!/bin/bash
-#Getteing a good directory
-basedir=$(dirname "$0")
+
 # Source environment variables and helper functions
-source "$basedir/../config/config.env"
-bash "$basedir/../modules/functions.sh"
+source "./config/config.env"
+source "./modules/functions.sh"
 
 # Path to the submissions file
-submissions_file="$basedir/../assets/submissions.txt"
+submissions_file="./assets/submissions.txt"
 
 # Print remaining time and run the reminder function
-echo "Assignment: "
-echo "Days remaining to submit:  days"
+echo "Assignment: $ASSIGNMENT"
+echo "Days remaining to submit: $DAYS_REMAINING days"
 echo "--------------------------------------------"
 
 check_submissions $submissions_file
