@@ -77,13 +77,16 @@ EOF
 
 #Creating the startup.sh file
 cat <<'EOF' > "$main_dir/startup.sh"
+cat <<'EOF' > "$main_dir/startup.sh"
 #!/bin/bash
+
 #changing to the parent directory
-script_dir="$(dirname "$0")"
-#Navigateing to that directory
+script_dir="$(cd "$(dirname "$0")" && pwd)"
+
+#Navigating to the script_dir directory
 cd "$script_dir"
-source ./config/config.env
-source ./modules/functions.sh
+
+#Running the reminder.sh script
 bash ./app/reminder.sh
 EOF
 
