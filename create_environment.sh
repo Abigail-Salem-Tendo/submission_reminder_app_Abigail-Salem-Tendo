@@ -2,10 +2,10 @@
 #This script creates the environment for the app
 
 #Prompting the user to enter their name
-read -p "Enter your name: " usr_name
+read -p "Enter your name: " user_name
 
 #Create the folder with the user's name; this will be the parent directory
-main_dir="submission_reminder_$usr_name"
+main_dir="submission_reminder_$user_name"
 
 #Creating the parent directory and subdirectories
 mkdir -p "$main_dir/app"
@@ -14,12 +14,12 @@ mkdir -p "$main_dir/assets"
 mkdir -p "$main_dir/config"
 
 #Now populating the app directory with reminder.sh script
-cat <<EOF > "$main_dir/app/reminder.sh"
+cat <<'EOF' > "$main_dir/app/reminder.sh"
 #!/bin/bash
 
 # Source environment variables and helper functions
-source ./config/config.env
-source ./modules/functions.sh
+source "./config/config.env"
+source "./modules/functions.sh"
 
 # Path to the submissions file
 submissions_file="./assets/submissions.txt"
@@ -33,7 +33,7 @@ check_submissions $submissions_file
 EOF
 
 #Populating the modules directory with the function.sh file
-cat <<EOF > "$main_dir/modules/functions.sh"
+cat <<'EOF' > "$main_dir/modules/functions.sh"
 #!/bin/bash
 
 
@@ -58,7 +58,7 @@ cat <<EOF > "$main_dir/modules/functions.sh"
 EOF
 
 #Creating the config.env file in the config directory
-cat <<EOF > "$main_dir/config/config.env"
+cat <<'EOF' > "$main_dir/config/config.env"
 # This is the config file
 ASSIGNMENT="Shell Navigation"
 DAYS_REMAINING=2
@@ -66,7 +66,7 @@ EOF
 
 
 #Creating the submission.txt files 
-cat <<EOF > "$main_dir/assets/submission.txt"
+cat <<'EOF' > "$main_dir/assets/submissions.txt"
 #Using the format: student, assignment, submission status
 Salem, Mission Journal, submitted
 Angela, Shell Basics, not submitted
@@ -76,12 +76,15 @@ Favour, Mathematics, submitted
 EOF
 
 #Creating the startup.sh file
-cat <<EOF > "$main_dir/startup.sh"
+cat <<'EOF' > "$main_dir/startup.sh"
 #!/bin/bash
-#using source
-source ./app/reminder.sh
+#changing to the parent directory
+script_dir="$(dirname "$0")"
+#Navigateing to that directory
+cd "$script_dir"
 source ./config/config.env
 source ./modules/functions.sh
+bash ./app/reminder.sh
 EOF
 
 
