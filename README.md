@@ -50,3 +50,8 @@ The system will then display the students who have not submitted that assignment
 ****config.env****  This file holds the assignment and days_remaining variables.
 
 ****submissions.txt**** This file contains the list of students, the assignment name, and submission status.
+
+
+****Author:****  Abigail Salem Tendo
+
+****GitHub Username:****  @Abigail-Salem-Tendo
