@@ -10,7 +10,6 @@ This is a Bash-based app whose purpose is to help remind students of pending ass
 
 ****Scripts in the Submission Reminder App****
 
-In the application I created, I have five scripts
 
 #1. 'create_environment.sh script'
 
@@ -39,3 +38,15 @@ This will create a directory called 'submission_reminder_<YourName>'
 Follow the prompts to enter the name of the assignment and the number of days it is due.
 
 The system will then display the students who have not submitted that assignment
+
+****Description of Files in the Submission Reminder App****
+
+(These files were created within the create_environment.sh script)
+
+****functions.sh:****  This is a function that reads the submissions file and outputs students who have not submitted.
+
+****reminder.sh****  This is a file that sources the variables and functions.
+
+****config.env****  This file holds the assignment and days_remaining variables.
+
+****submissions.txt**** This file contains the list of students, the assignment name, and submission status.
