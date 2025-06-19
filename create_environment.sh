@@ -68,15 +68,16 @@ EOF
 #Creating the submission.txt files 
 cat <<'EOF' > "$main_dir/assets/submissions.txt"
 #Using the format: student, assignment, submission status
+
+Chinemerem, Shell Navigation, not submitted
+Chiagoziem, Git, submitted
+Divine, Shell Navigation, not submitted
+Anissa, Shell Basics, submitted
 Salem, Mission Journal, submitted
 Angela, Shell Basics, not submitted
 Aaron, Learning Journal, not submitted
 Mark, Shell Navigation, submitted
 Favour, Mathematics, submitted
-Chinemerem, Shell Navigation, not submitted
-Chiagoziem, Git, submitted
-Divine, Shell Navigation, not submitted
-Anissa, Shell Basics, submitted
 EOF
 
 #Creating the startup.sh file
@@ -89,9 +90,6 @@ script_dir="$(cd "$(dirname "$0")" && pwd)"
 
 #Navigating to the script_dir directory
 cd "$script_dir"
-export submissions_file="$script_dir/assets/submissions.txt"
-source ./config/config.env
-source ./modules/functions.sh
 
 #Running the reminder.sh script
 bash ./app/reminder.sh

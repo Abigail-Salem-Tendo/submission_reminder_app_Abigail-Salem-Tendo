@@ -1,8 +1,7 @@
 #!/usr/bin/env bash
 
 #Asking the user to enter the name of the directory
-echo "Enter your name (used when creating your environment): "
-read usr_name
+read -p "Enter your name (used when creating your environment): " usr_name
 
 #Storing the name of the directory in a variable
 app_dir="submission_reminder_$usr_name"
@@ -14,16 +13,23 @@ if [ ! -d "$app_dir" ]; then
 fi
 
 #Asking the user to enter their assignment name
-echo "Enter the name of your new assignment: "
-read assignment
+read -p "Enter the name of the assignment: " assignment
 
-#Asking the user to enter the number of days remaining to complete the new assignment
-echo "Enter the number of days remaining to submit your assignment"
-read remaining_days
+#checking to see if the user, and assignment already exist in the submissions.txt file
+if ! grep -q "^$usr_name, $assignment" "$app_dir/assets/submissions.txt"; then
+
+	#Adding the user's new assignment to the submissions.txt file if it does not exist yet
+	echo "$usr_name, $assignment, not submitted" >> "$app_dir/assets/submissions.txt"
+fi
+
+#Asking the user to enter the number of days remaining to complete the assignment
+read -p "Enter the number of days remaining to submit your assignment: " remaining_days
+
+
 #Storing the location of the config file in a variable
 config_file="$app_dir/config/config.env"
 
-#Update the config.env file with the new assignment
+#Update the config.env file with the new assignment and days remaining to submit the assignment
 sed -i "s/^ASSIGNMENT=.*/ASSIGNMENT=\"${assignment}\"/" "$config_file"
 sed -i "s/^DAYS_REMAINING=.*/DAYS_REMAINING=${remaining_days}/" "$config_file"
 
